@@ -30,9 +30,13 @@ const ticketSchema = new Schema(
       type: Number,
       require: true,
     },
-    TtravelTime: {
+    travelTime: {
       type: Date,
       require: true,
+    },
+    quantityAvailable:{
+      type: Number,
+      require:true
     },
     user: {
       type: Schema.Types.ObjectId,

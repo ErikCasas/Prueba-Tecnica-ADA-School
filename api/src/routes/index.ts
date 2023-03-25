@@ -13,5 +13,9 @@ router.get('/',async (_req , res) => {
     }
 })
 
+//rutas a segun la catogoria 
+router.use(ticketRoutes)
+router.use(userRoutes)
+
 
 export default router;
