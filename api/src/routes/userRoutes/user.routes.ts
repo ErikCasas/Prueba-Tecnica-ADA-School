@@ -1,13 +1,16 @@
-import { Router } from "express";
-import LogIn from "../../controllers/user/logInUser";
-import { validateToken } from "../../middleware/validateToken";
+import { Router } from 'express';
+import editUser from '../../controllers/user/editUser';
+import LogIn from '../../controllers/user/logInUser';
+import SignUp from '../../controllers/user/signUpUser';
+import { validateToken } from '../../middleware/validateToken';
 
-const router = Router()
+const router = Router();
 
-router.post('/'/*logIn*/, LogIn);
-router.put('/'/*edit*/, validateToken );
-router.post('/create');
-router.get('/getAll', validateToken);
-router.get('/user/', validateToken);
+router.post('/LogIn', LogIn);
+router.post('/SignUp', SignUp);
 
-export default router
+router.put('/Edit', validateToken, editUser);
+router.get('/GetAll', validateToken);
+router.get('/User', validateToken);
+
+export default router;

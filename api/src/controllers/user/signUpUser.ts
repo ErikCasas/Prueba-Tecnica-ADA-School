@@ -1,11 +1,12 @@
-require('dotenv').config();
 import User from '../../models/userModel';
 import {Role} from '../../types'
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 
-const signIn = async (req: Request, res: Response) => {
+const SignUp = async (req: Request, res: Response) => {
   const { name, email, phone, password } = req.body;
+  console.log(req.body,"aasd");
+  
   try {
     const existUser = await User.findOne({ email });
     if (existUser) {
@@ -19,9 +20,11 @@ const signIn = async (req: Request, res: Response) => {
         passwordHash,
         role: 'Client' as Role
     });
-    newUser.save();
-    res.status(201).json(newUser);
-  } catch (error) {}
+    await newUser.save();
+    res.status(201).json({ message: 'User created successfully', user: newUser });
+  } catch (error) {
+    res.status(500).json(error)
+  }
 };
 
-export default signIn;
+export default SignUp;

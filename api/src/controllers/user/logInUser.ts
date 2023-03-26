@@ -4,37 +4,40 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 
+
 const LogIn = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   try {
     if (!email || !password) {
-      res.status(400).json({ error: 'Email and password are required' });
+      return res.status(400).json({ error: 'Email and password are required' }); // Agregamos un return para salir de la función después de enviar la respuesta HTTP
     }
 
-    const user = await User.findOne({ email }).populate('tickets');
+    const user = await User.findOne({ email })//.populate('ticketmodels');
 
     const accessGranted =
       user!==null && (await bcrypt.compare(password, user.passwordHash));
     if (!accessGranted) {
-      res.status(401).json({ error: 'Invalid email or password' });
+      return res.status(401).json({ error: 'Invalid email or password' }); // Agregamos un return para salir de la función después de enviar la respuesta HTTP
     }
 
     const userToken = {
       id: user?._id,
       name: user?.name,
       email: user?.email,
-      tickets: user?.tickets,
+      phone: user?.phone,
       role: user?.role,
+      tickets: user?.tickets,
     };
 
     const token = jwt.sign(userToken, process.env.JWT || 'default-secret');
 
-    res.status(200).json({
+    return res.status(200).json({
       userToken,
       token,
     });
   } catch (error) {
-    res.status(400).json({ 'error :>> ': error });
+    console.log(error);
+    return res.status(500).json({ 'error :>> ': error });
   };
 };
 

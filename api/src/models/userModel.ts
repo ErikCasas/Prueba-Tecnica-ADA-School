@@ -35,6 +35,6 @@ const userSchema = new Schema({
   ],
 });
 
-const User: Model<IUser> = model<IUser>('TicketModel', userSchema);
+const User: Model<IUser> = model<IUser>('UserModel', userSchema);
 
 export default User;
