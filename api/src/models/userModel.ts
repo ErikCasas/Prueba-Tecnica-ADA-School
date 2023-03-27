@@ -1,6 +1,7 @@
 import { Model, Schema, model } from 'mongoose';
 import { IUser } from '../types';
 
+/* Creating a schema for the user model. */
 const userSchema = new Schema({
   name: {
     type: String,

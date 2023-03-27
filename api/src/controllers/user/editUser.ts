@@ -3,6 +3,13 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import decodedToken from '../../middleware/decoded';
 
+/**
+ * It's a function that allows a user to edit their own profile, or an admin to edit any user's
+ * profile.
+ * @param {Request} req - Request - The request object.
+ * @param {Response} res - Response: The response object.
+ * @returns The user is being returned.
+ */
 const editUser = async (req: Request, res: Response) => {
 
   const authorization = req.get('authorization');

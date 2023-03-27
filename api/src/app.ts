@@ -3,9 +3,11 @@ import morgan from 'morgan';
 import routes from './routes/index'
 const app = express();
 
-
+/* A middleware that parses the body of the request and makes it available in the req.body property. */
 app.use(express.json())
+/* A middleware that logs the requests to the console. */
 app.use(morgan('dev'));
+/* Importing the routes from the routes folder. */
 app.use(routes)
 
 // app.use((req, res, next) => {

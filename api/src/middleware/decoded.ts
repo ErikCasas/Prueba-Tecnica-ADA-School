@@ -2,6 +2,13 @@ import { Response, Request } from 'express';
 import jwt from 'jsonwebtoken';
 import { IUser } from '../types';
 
+/**
+ * It takes a request, a response, and an authorization header, and returns a decoded token
+ * @param {Request} req - Request - the request object
+ * @param {Response} res - Response - the response object
+ * @param {string | undefined} authorization - string | undefined
+ * @returns The decoded token.
+ */
 const decodedToken = (req: Request, res: Response, authorization: string | undefined) => {
   let token: any = '';
   if (authorization && authorization.toLocaleLowerCase().startsWith('bearer ')) {

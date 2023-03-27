@@ -1,9 +1,15 @@
 require('dotenv').config();
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-// import User from '../models/userModel';
 import { IUser } from '../types';
 
+/**
+ * If the token is valid, then the user is authorized to access the next route
+ * @param {Request | any} req - Request | any,
+ * @param {Response | any} res - Response | any
+ * @param {NextFunction} next - NextFunction - This is a function that will be called to pass control
+ * to the next middleware function.
+ */
 const validateToken = async (
   req: Request | any,
   res: Response | any,

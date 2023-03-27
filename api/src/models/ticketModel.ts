@@ -1,6 +1,7 @@
 import { Model, Schema, model } from 'mongoose';
 import { ITicket } from '../types';
 
+/* Creating a schema for the ticket model. */
 const ticketSchema = new Schema(
   {
     name: {

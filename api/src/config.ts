@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+/**
+ * It connects to the database and logs a message to the console
+ */
 mongoose.set("strictQuery", true);
 
 const db = () => {
