@@ -8,6 +8,7 @@ const ticketSchema = new Schema(
       type: String,
       require: true,
       trim: true,
+      unique: true
     },
     origin: {
       type: String,
@@ -31,13 +32,16 @@ const ticketSchema = new Schema(
       type: Number,
       require: true,
     },
-    travelTime: {
+    departureTime: {
       type: Date,
       require: true,
     },
+    quantity:{
+      type: Number,
+    },
     quantityAvailable:{
       type: Number,
-      require:true
+      require: true
     },
     user: {
       type: Schema.Types.ObjectId,

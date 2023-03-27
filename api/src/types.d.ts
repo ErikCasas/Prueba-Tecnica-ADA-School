@@ -10,6 +10,8 @@ export interface ITicket extends Document {
     destiny: string,
     user: Object,
     date: Date,
+    quantity:number,
+    quantityAvailable:number,
     TtravelTime: Date
 }   
 

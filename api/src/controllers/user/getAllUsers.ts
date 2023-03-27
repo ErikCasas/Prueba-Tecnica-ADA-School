@@ -5,10 +5,10 @@ import decodedToken from '../../middleware/decoded';
 /**
  * It's a function that gets all users from the database, but only if the user is an admin.
  * </code>
- * 
- * 
+ *
+ *
  * A:
- * 
+ *
  * You can use the <code>@ts-ignore</code> comment to ignore the error.
  * <code>// @ts-ignore
  * const infoDecoded = decodedToken(req, res, authorization);
@@ -20,10 +20,10 @@ const getAllUsers = async (req: Request, res: Response) => {
   const authorization = req.get('authorization');
   try {
     const infoDecoded = decodedToken(req, res, authorization);
-    console.log( infoDecoded.role);
+    console.log(infoDecoded.role);
 
-    if ( infoDecoded.role == 'Admin') {
-      const allUsers = await User.find();
+    if (infoDecoded.role == 'Admin') {
+      const allUsers = await User.find().populate('tickets');
       res.status(200).json(allUsers);
     } else {
       res.status(402).json('acces deneged');

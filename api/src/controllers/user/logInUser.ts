@@ -22,7 +22,7 @@ const LogIn = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Email and password are required' }); // Agregamos un return para salir de la función después de enviar la respuesta HTTP
     }
 
-    const user = await User.findOne({ email }); //.populate('ticketmodels');
+    const user = await User.findOne({ email }).populate('tickets');
 
     const accessGranted =
       user !== null && (await bcrypt.compare(password, user.passwordHash));

@@ -10,7 +10,7 @@ const SignUp = async (req: Request, res: Response) => {
   try {
     const existUser = await User.findOne({ email });
     if (existUser) {
-      res.status(409).json('this user already exists');
+      return res.status(409).json('this user already exists');
     };
     const passwordHash = await bcrypt.hash(password, 10);
     const newUser = new User({
@@ -21,9 +21,9 @@ const SignUp = async (req: Request, res: Response) => {
         role: 'Client' as Role
     });
     await newUser.save();
-    res.status(201).json({ message: 'User created successfully', user: newUser });
+    return res.status(201).json({ message: 'User created successfully', user: newUser });
   } catch (error) {
-    res.status(500).json(error)
+    return res.status(500).json(error)
   }
 };
 
