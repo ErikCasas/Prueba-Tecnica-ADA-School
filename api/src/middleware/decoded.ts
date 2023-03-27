@@ -2,7 +2,7 @@ import { Response, Request } from 'express';
 import jwt from 'jsonwebtoken';
 import { IUser } from '../types';
 
-const decodedToken = (req: Request, res: Response, authorization: string) => {
+const decodedToken = (req: Request, res: Response, authorization: string | undefined) => {
   let token: any = '';
   if (authorization && authorization.toLocaleLowerCase().startsWith('bearer ')) {
     token = req.headers.authorization?.split(' ')[1];

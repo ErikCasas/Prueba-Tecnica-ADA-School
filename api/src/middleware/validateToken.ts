@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 // import User from '../models/userModel';
 import { IUser } from '../types';
 
-export const validateToken = async (
+const validateToken = async (
   req: Request | any,
   res: Response | any,
   next: NextFunction
@@ -21,7 +21,7 @@ export const validateToken = async (
       process.env.JWT || 'default-secret'
       ) as IUser;
 
-      console.log(decoded);
+      // console.log(decoded);
 
     decoded.role === 'Client' || decoded.role === 'Admin'
       ? next()
@@ -33,3 +33,5 @@ export const validateToken = async (
     res.status(401).json({ message: 'Invalid token' });
   }
 };
+
+export default validateToken
