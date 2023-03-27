@@ -1,6 +1,6 @@
 import { Response, Request } from 'express';
 import jwt from 'jsonwebtoken';
-import { IUser } from '../types';
+import { User } from '../types';
 
 /**
  * It takes a request, a response, and an authorization header, and returns a decoded token
@@ -20,7 +20,7 @@ const decodedToken = (req: Request, res: Response, authorization: string | undef
   const decoded = jwt.verify(
     token,
     process.env.JWT || 'default-secret'
-  ) as IUser;
+  ) as User;
   if (!decoded.id) {
     res.status(401).json('token missing or invalid');
   }

@@ -1,7 +1,7 @@
 require('dotenv').config();
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { IUser } from '../types';
+import { User } from '../types';
 
 /**
  * If the token is valid, then the user is authorized to access the next route
@@ -25,7 +25,7 @@ const validateToken = async (
     const decoded = jwt.verify(
       token,
       process.env.JWT || 'default-secret'
-      ) as IUser;
+      ) as User;
 
       // console.log(decoded);
 

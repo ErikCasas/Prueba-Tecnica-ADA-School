@@ -1,5 +1,5 @@
 import { Model, Schema, model } from 'mongoose';
-import { ITicket } from '../types';
+import { Ticket } from '../types';
 
 /* Creating a schema for the ticket model. */
 const ticketSchema = new Schema(
@@ -54,6 +54,6 @@ const ticketSchema = new Schema(
   }
 );
 
-const Ticket: Model<ITicket> = model<ITicket>('TicketModel', ticketSchema);
+const Ticket: Model<Ticket> = model<Ticket>('TicketModel', ticketSchema);
 
 export default Ticket;

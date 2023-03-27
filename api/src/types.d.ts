@@ -2,7 +2,7 @@ import { Document } from "mongoose";
 
 export type Role = 'Admin' | 'Disable' | 'Client'
 
-export interface ITicket extends Document {
+export interface Ticket extends Document {
     name: string,
     price: number,
     numberOfPassengers: number,
@@ -15,7 +15,7 @@ export interface ITicket extends Document {
     TtravelTime: Date
 }   
 
-export interface IUser extends Document {
+export interface User extends Document {
     name: string,
     email: string,
     passwordHash: string;
