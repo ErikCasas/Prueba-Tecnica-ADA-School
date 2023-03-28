@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Routes,BrowserRouter } from "react-router-dom";
 import FormLogIn from '../Components/FormLogIn/FormLogIn';
 
 import Test from '../Components/test/test';
+import { SetUserState } from '../Store/Slices/User/Thunk';
 
 /**
  * un ejemplo en una version anterior de react-router-dom
@@ -14,7 +16,15 @@ import Test from '../Components/test/test';
  * 
  */
 
+
 const AppRoutes = () => {
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(SetUserState())
+  }, []);
+
+
   return (
     <>
     <BrowserRouter>

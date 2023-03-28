@@ -8,10 +8,12 @@ import AlertMessage from '../AlertyMessage/AlertMessage';
 const FormLogIn = () => {
   
   const state = useSelector(state=>state.user.message)
+  const state1 = useSelector(state=>state.user.user)
+  
   const dispatch = useDispatch()
 
   const handlerSubmit = (e) => {
-    console.log(state);
+    console.log(state1);
     dispatch(LogInUser(e))
   };
 

@@ -12,7 +12,6 @@ export const UserSlice = createSlice({
   initialState,
   reducers: {
     logInUser: (state, action) => {
-      console.log('SLICE>>',action.payload);
       state.user=action.payload.user
     },
     signUp: (state, action) => {
@@ -26,8 +25,11 @@ export const UserSlice = createSlice({
     },
     setMessage: (state, action) => {
       state.message = action.payload
+    },
+    setUser: (state, action) => {
+      state.user = action.payload
     }
   },
 });
 
-export const { logInUser, signUp, editUser, getAllUsers, setMessage} = UserSlice.actions
+export const { logInUser, signUp, editUser, getAllUsers, setMessage, setUser} = UserSlice.actions
