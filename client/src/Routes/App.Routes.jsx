@@ -26,7 +26,8 @@ const AppRoutes = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/test" element={<FormLogIn />} />
+          <Route exact path="/LogIn" element={<FormLogIn />} />
+          <Route exact path="/" element={<Test/>} />
         </Routes>
       </BrowserRouter>
     </>
