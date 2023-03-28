@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Routes,BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import FormLogIn from '../Components/FormLogIn/FormLogIn';
 
 import Test from '../Components/test/test';
@@ -16,22 +16,19 @@ import { SetUserState } from '../Store/Slices/User/Thunk';
  * 
  */
 
-
 const AppRoutes = () => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(SetUserState())
+    dispatch(SetUserState());
   }, []);
-
 
   return (
     <>
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/test" element={<FormLogIn/>} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/test" element={<FormLogIn />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };

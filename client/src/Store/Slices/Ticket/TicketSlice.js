@@ -20,4 +20,5 @@ export const TicketSlice = createSlice({
   },
 });
 
-export const { buyTicket, createTicket } = TicketSlice.actions
+export const { buyTicket, createTicket } = TicketSlice.actions;
+export default TicketSlice.reducer;

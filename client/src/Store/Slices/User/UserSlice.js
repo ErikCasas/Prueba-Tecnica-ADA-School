@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: {},
+  user: null,
   allUsers: [],
   isLoading: false,
-  message:""
+  message: '',
 };
 
 export const UserSlice = createSlice({
@@ -12,24 +12,27 @@ export const UserSlice = createSlice({
   initialState,
   reducers: {
     logInUser: (state, action) => {
-      state.user=action.payload.user
+      state.user = action.payload.user.data;
     },
     signUp: (state, action) => {
-      state.user;
+      state.user = action.payload.user.data;
     },
     editUser: (state, action) => {
-      state.user;
+      state.user = action.payload.user.data;
     },
     getAllUsers: (state, action) => {
-      state.allUsers;
+      state.allUsers = action.payload;
     },
     setMessage: (state, action) => {
-      state.message = action.payload
+      state.message = action.payload;
     },
     setUser: (state, action) => {
-      state.user = action.payload
-    }
+      state.user = action.payload;
+    },
   },
 });
 
-export const { logInUser, signUp, editUser, getAllUsers, setMessage, setUser} = UserSlice.actions
+export const { logInUser, signUp, editUser, getAllUsers, setMessage, setUser } =
+  UserSlice.actions;
+
+export default UserSlice.reducer;
