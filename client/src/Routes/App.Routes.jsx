@@ -1,20 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import FormLogIn from '../Components/FormLogIn/FormLogIn';
-
 import Test from '../Components/test/test';
 import { SetUserState } from '../Store/Slices/User/Thunk';
-
-/**
- * un ejemplo en una version anterior de react-router-dom
- *     <BrowserRouter>
-        <Switch>
-          <Route exact path={"/ejemplo"} component={ejemplo} />
-        </Switch>
-    </BrowserRouter>
- * 
- */
+import PublicRoute from './PublicRoute';
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -25,13 +15,24 @@ const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route exact path="/LogIn" element={<FormLogIn />} />
-          <Route exact path="/" element={<Test/>} />
-        </Routes>
+        <Switch>
+          <PublicRoute path="/LogIn" component={FormLogIn} />
+          <Route path="/" component={Test}/>
+        </Switch>
       </BrowserRouter>
     </>
   );
 };
 
 export default AppRoutes;
+
+
+/**
+ * un ejemplo en una version anterior de react-router-dom
+ *     <BrowserRouter>
+        <Switch>
+          <Route exact path={"/ejemplo"} component={ejemplo} />
+        </Switch>
+    </BrowserRouter>
+ * 
+ */

@@ -6,7 +6,8 @@ export const LogInUser = (data) => {
     try {
       const response = await api.post('/LogIn', data);
       window.localStorage.setItem('token', JSON.stringify(response));
-      dispatch(logInUser({ user: response }));
+      // console.log('response :>> ', response.data);
+      dispatch(logInUser({ user: response.data }));
     } catch (error) {
       console.log('error :>> ', error.response.data.error);
       dispatch(setMessage(error.response.data.error));

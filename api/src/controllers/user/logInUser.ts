@@ -41,15 +41,15 @@ const LogIn = async (req: Request, res: Response) => {
       phone: user?.phone,
       role: user?.role,
       tickets: user?.tickets,
+
     };
 
     const token = jwt.sign(userToken, process.env.JWT || 'default-secret');
+
+    const UserLoged = {...userToken, token}
     // The created user and his token are returned, but only the token is necessary,
     // only the user is left to demonstrate and have greater visibility of the information
-    return res.status(200).json({
-      userToken,
-      token,
-    });
+    return res.status(200).json(UserLoged);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ 'error :>> ': error });
