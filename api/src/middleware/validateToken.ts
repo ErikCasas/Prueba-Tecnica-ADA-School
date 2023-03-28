@@ -17,17 +17,20 @@ const validateToken = async (
 ) => {
   
   try {
+    console.log(req.headers.authorization)
     const token = req.headers.authorization?.split(' ')[1];
+    
     if (!token) {
       return res.status(401).json({ message: 'No token provided' });
     }
     
+    console.log("antes");
+    console.log(token);
     const decoded = jwt.verify(
       token,
       process.env.JWT || 'default-secret'
       ) as User;
-
-      // console.log(decoded);
+      
 
     decoded.role === 'Client' || decoded.role === 'Admin'
       ? next()
@@ -35,7 +38,7 @@ const validateToken = async (
 
     
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(401).json({ message: 'Invalid token' });
   }
 };

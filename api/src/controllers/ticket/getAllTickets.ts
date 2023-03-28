@@ -2,7 +2,7 @@ import Ticket from '../../models/ticketModel';
 import { Request, Response } from 'express';
 
 const getAllTickets = async (_req: Request, res: Response) => {
-    console.log("sfa    ");
+    console.log("sfa");
     
   try {
     const tickets = await Ticket.find().exec();

@@ -17,8 +17,12 @@ export const TicketSlice = createSlice({
     createTicket: (state, action) => {
       state.createTicket;
     },
+    allTickets: (state, action) => {
+      console.log('action.pau :>> ', action.payload);
+      state.allTickets = action.payload
+    }
   },
 });
 
-export const { buyTicket, createTicket } = TicketSlice.actions;
+export const { buyTicket, createTicket, allTickets } = TicketSlice.actions;
 export default TicketSlice.reducer;

@@ -5,7 +5,9 @@ export const LogInUser = (data) => {
   return async function (dispatch) {
     try {
       const response = await api.post('/LogIn', data);
-      window.localStorage.setItem('token', JSON.stringify(response));
+      console.log('response :>> ', response);
+      window.localStorage.setItem('token', JSON.stringify(response.data.token));
+      window.localStorage.setItem('user', JSON.stringify(response.data));
       // console.log('response :>> ', response.data);
       dispatch(logInUser({ user: response.data }));
     } catch (error) {
@@ -17,7 +19,7 @@ export const LogInUser = (data) => {
 
 export const SetUserState = () => {
   return function (dispatch) {
-    const logedUser = window.localStorage.getItem('token');
+    const logedUser = window.localStorage.getItem('user');
     if (logedUser) {
       const user = JSON.parse(logedUser);
       dispatch(setUser({ user: user.data }));

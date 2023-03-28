@@ -43,6 +43,7 @@ const LogIn = async (req: Request, res: Response) => {
       tickets: user?.tickets,
 
     };
+    console.log(process.env.JWT);
 
     const token = jwt.sign(userToken, process.env.JWT || 'default-secret');
 
