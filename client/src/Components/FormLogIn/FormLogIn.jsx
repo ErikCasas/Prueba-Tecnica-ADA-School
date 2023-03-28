@@ -1,19 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Form, Formik, Field } from 'formik';
 import { LogInUser } from '../../Store/Slices/User/Thunk';
+import AlertMessage from '../AlertyMessage/AlertMessage';
 
 const FormLogIn = () => {
   
+  const state = useSelector(state=>state.user.message)
   const dispatch = useDispatch()
 
   const handlerSubmit = (e) => {
+    console.log(state);
     dispatch(LogInUser(e))
   };
 
   return (
     <>
+          {state?<AlertMessage message={state}/>:null}
       <Formik
         initialValues={{
           email: '',
