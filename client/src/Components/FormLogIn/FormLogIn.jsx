@@ -1,0 +1,42 @@
+import React from 'react';
+import styled from 'styled-components';
+import { useDispatch } from 'react-redux'
+import { Form, Formik, Field } from 'formik';
+import { LogInUser } from '../../Store/Slices/User/Thunk';
+
+const FormLogIn = () => {
+  
+  const dispatch = useDispatch()
+
+  const handlerSubmit = (e) => {
+    dispatch(LogInUser(e))
+  };
+
+  return (
+    <>
+      <Formik
+        initialValues={{
+          email: '',
+          password: '',
+        }}
+        onSubmit={handlerSubmit}
+      >
+        <Form>
+        <div className="form-floating mb-6">
+          <Field name="email" type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
+          <label htmlFor="floatingInput">Email address</label>
+        </div>
+        <div className="form-floating mb-3">
+          <Field name="password" type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
+          <label htmlFor="floatingPassword">Password</label>
+        </div>
+          <button type='submit' className='btn btn-info'>LogIn</button>
+        </Form>
+      </Formik>
+    
+    </>
+  );
+};
+
+
+export default FormLogIn;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes,BrowserRouter } from "react-router-dom";
+import FormLogIn from '../Components/FormLogIn/FormLogIn';
 
 import Test from '../Components/test/test';
 
@@ -18,7 +19,7 @@ const AppRoutes = () => {
     <>
     <BrowserRouter>
       <Routes>
-        <Route exact path="/test" element={<Test/>} />
+        <Route exact path="/test" element={<FormLogIn/>} />
       </Routes>
     </BrowserRouter>
     </>

@@ -17,6 +17,10 @@ import { Request, Response } from 'express';
  */
 const LogIn = async (req: Request, res: Response) => {
   const { email, password } = req.body;
+  console.log(req.body);
+  console.log("asdas");
+  
+  
   try {
     if (!email || !password) {
       return res.status(400).json({ error: 'Email and password are required' }); // Agregamos un return para salir de la función después de enviar la respuesta HTTP
