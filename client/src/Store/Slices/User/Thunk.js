@@ -5,7 +5,6 @@ export const LogInUser = (data) => {
   return async function (dispatch) {
     try {
       const response = await api.post('/LogIn', data);
-      console.log('response :>> ', response);
       window.localStorage.setItem('token', JSON.stringify(response.data.token));
       window.localStorage.setItem('user', JSON.stringify(response.data));
       // console.log('response :>> ', response.data);

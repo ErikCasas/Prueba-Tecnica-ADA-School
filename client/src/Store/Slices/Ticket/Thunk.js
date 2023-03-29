@@ -8,7 +8,7 @@ export const getAllTickets = () =>{
             console.log('responsable :>> ', data);
             dispatch(allTickets({tickets:data}))
         } catch (error) {
-            
+            console.log('error :>> ', error);
         }
     }
 }
