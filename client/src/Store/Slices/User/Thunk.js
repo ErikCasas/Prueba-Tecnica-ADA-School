@@ -21,7 +21,7 @@ export const SetUserState = () => {
     const logedUser = window.localStorage.getItem('user');
     if (logedUser) {
       const user = JSON.parse(logedUser);
-      dispatch(setUser({ user: user.data }));
+      dispatch(setUser({ user: user }));
     }
   };
 };
