@@ -22,7 +22,7 @@ export const UserSlice = createSlice({
     editUser: (state, action) => {
       state.user = action.payload.user.data;
     },
-    getAllUsers: (state, action) => {
+    getUsers: (state, action) => {
       state.allUsers = action.payload;
     },
     setMessage: (state, action) => {
@@ -34,6 +34,6 @@ export const UserSlice = createSlice({
   },
 });
 
-export const { logInUser, signUp, editUser, getAllUsers, setMessage, setUser } = UserSlice.actions;
+export const { logInUser, signUp, editUser, getUsers, setMessage, setUser } = UserSlice.actions;
 
 export default UserSlice.reducer;
