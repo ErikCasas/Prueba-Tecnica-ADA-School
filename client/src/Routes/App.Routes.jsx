@@ -11,6 +11,7 @@ import NavBar from '../Components/NavBAr/NavBar';
 import Test from '../Components/test/test';
 import Layout from '../Layout/Layout';
 import BuyTicket from '../Pages/DetailTicket/BuyTicket';
+import DetailUser from '../Pages/DetailUser/DetailUser';
 import Home from '../Pages/home/Home';
 import ListUsers from '../Pages/ListUsers/ListUsers';
 import { SetUserState } from '../Store/Slices/User/Thunk';
@@ -29,11 +30,13 @@ const AppRoutes = () => {
       <BrowserRouter>
         <Layout>
           <Switch>
+            <Route exact path={'/test'} component={ListUsers} />
+
             <PublicRoute exact path="/LogIn" component={FormLogIn} />
             <PublicRoute exact path="/SigIn" component={FormSigIn} />
-            <Route exact path={'/test'} component={ListUsers} />
             <Route exact path={'/createTicket'} component={FormCreateTicket} />
-            
+            <Route exact path={'/profile/:id'} component={DetailUser} />
+          
             <Route exact path={'/ticket/:id'} component={BuyTicket} />
             <Route exact path="/home" component={Home} />
           </Switch>

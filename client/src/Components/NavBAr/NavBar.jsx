@@ -20,7 +20,7 @@ const NavBar = () => {
               </button>
             </Link>
 
-            {user?.user.role === 'Admin' ? (
+            {user?.user?.role === 'Admin' ? (
               <>
                 <Link to={'/editUsers'}>
                   <button className="btn btn-outline-info me-2" type="button">
@@ -35,7 +35,7 @@ const NavBar = () => {
               </>
             ) : null}
           </div>
-          <Link to={`/profile/${user?.user.id}`}>
+          <Link to={`/profile/${user?.user?.id}`}>
             <button className="btn btn-outline-info me-2" type="button">
               Profile
             </button>
