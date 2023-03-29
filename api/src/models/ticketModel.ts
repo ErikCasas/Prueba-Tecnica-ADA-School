@@ -21,7 +21,7 @@ const ticketSchema = new Schema(
       trim: true,
     },
     date: {
-      type: Date,
+      type: String,
       require: true,
     },
     numberOfPassengers: {
@@ -33,7 +33,7 @@ const ticketSchema = new Schema(
       require: true,
     },
     departureTime: {
-      type: Date,
+      type: String,
       require: true,
     },
     quantity:{

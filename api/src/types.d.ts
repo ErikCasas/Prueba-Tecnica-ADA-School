@@ -9,10 +9,12 @@ export interface Ticket extends Document {
     origin: string,
     destiny: string,
     user: Object,
-    date: Date,
+    date: string,
     quantity:number,
     quantityAvailable:number,
-    TtravelTime: Date
+    travelTime: string,
+    departureTime: string,
+    
 }   
 
 export interface User extends Document {

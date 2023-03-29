@@ -5,7 +5,8 @@ import decodedToken from '../../middleware/decoded';
 
 const createTicket = async (req: Request, res: Response) => {
   const authorization = req.get('authorization');
-  //   console.log("holaa");
+    req.body.quantityAvailable=req.body.numberOfPassengers
+    console.log(req.body); 
   try {
     const infoDecoded = decodedToken(req, res, authorization);
     const user = await User.findById(infoDecoded.id);

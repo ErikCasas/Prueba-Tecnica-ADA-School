@@ -12,3 +12,14 @@ export const getAllTickets = () =>{
         }
     }
 }
+
+export const createTicket = (data) => {
+    return async function(dispatch) {
+        try {
+            const response = await api.post('/tickets', data)
+            console.log({response});
+        } catch (error) {
+            console.log('error :>> ', error);
+        }
+    }
+} 

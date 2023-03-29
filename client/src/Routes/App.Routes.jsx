@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import FormCreateTicket from '../Components/FormCreateTicket/FormCreateTicket';
 import FormLogIn from '../Components/FormLogIn/FormLogIn';
 import FormSigIn from '../Components/FormSignUp/FormSignUp';
 import NavBar from '../Components/NavBAr/NavBar';
@@ -23,7 +24,7 @@ const AppRoutes = () => {
         <Switch>
           <PublicRoute exact path="/LogIn" component={FormLogIn} />
           <PublicRoute exact path="/SigIn" component={FormSigIn} />
-          <Route exact path={'/test'} component={NavBar} />
+          <Route exact path={'/test'} component={FormCreateTicket} />
           <Route exact path="/home" component={Home} />
         </Switch>
       </BrowserRouter>
