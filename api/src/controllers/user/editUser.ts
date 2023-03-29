@@ -21,9 +21,9 @@ const editUser = async (req: Request, res: Response) => {
     const email = {email: infoDecoded.email}
 
     password = password && (await bcrypt.hash(password, 10));
-    const user = await User.findOneAndUpdate(email, req.body, option);
+    const user = await User.findOneAndUpdate(email, req.body, option).populate('tickets');
     if (user?.email === infoDecoded.email || infoDecoded.role === 'Admin') {
-      return res.status(200).json({ 'the user has benn update': user });
+      return res.status(200).json(user);
     }
     return res.status(401).json('user not found');
   } catch (error) {

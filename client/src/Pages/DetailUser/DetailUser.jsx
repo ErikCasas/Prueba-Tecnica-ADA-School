@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import CardTicket from '../../Components/CardTicket/CardTicket';
 import CardUser from '../../Components/CardUser/CardUser';
 
@@ -26,7 +25,7 @@ const DetailUser = () => {
         {data?.tickets?.map((el) => {
           return (
             <CardTicket
-              key={el._id}
+              key={Math.random()}
               name={el.name}
               detinity={el.destiny}
               origin={el.origin}

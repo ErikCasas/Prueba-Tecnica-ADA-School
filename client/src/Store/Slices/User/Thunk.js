@@ -1,5 +1,5 @@
 import { api } from '../../../api/axiosConfig';
-import { getUsers, logInUser, setMessage, setUser, signUp } from './UserSlice';
+import { getUsers, logInUser, setMessage, setUser, signUp, updateStateUser } from './UserSlice';
 
 export const LogInUser = (data) => {
   return async function (dispatch) {
@@ -28,28 +28,40 @@ export const SetUserState = () => {
 
 export const LogOutUser = () => {
   return function (dispatch) {
-    window.localStorage.removeItem('user')
-    window.localStorage.removeItem('token')
-    dispatch(setUser({user:null}))
-  }
-}
+    window.localStorage.removeItem('user');
+    window.localStorage.removeItem('token');
+    dispatch(setUser({ user: null }));
+  };
+};
 
 export const registerUSer = (data) => {
-  return async function(dispatch){
+  return async function (dispatch) {
     try {
-      const response = await api.post('/SignUp', data)
-      console.log("creado", response.data)
-      dispatch(setMessage('Now you can log in'))
+      const response = await api.post('/SignUp', data);
+      console.log('creado', response.data);
+      dispatch(setMessage('Now you can log in'));
     } catch (error) {
       console.log('error :>> ', error);
     }
-  }
-}
-
+  };
+};
 
 export const getAllUsers = () => {
-  return async function(dispatch){
-    const {data} = await api.get('/GetAll')
-    dispatch(getUsers(data))
-  }
-}
+  return async function (dispatch) {
+    const { data } = await api.get('/GetAll');
+    dispatch(getUsers(data));
+  };
+};
+
+export const updateUser = () => {
+  return async function (dispatch) {
+    try {
+      const response = await api.put('/Edit');
+      window.localStorage.removeItem('user');
+      window.localStorage.setItem('user', JSON.stringify(response.data));
+      console.log('>>>>>', response);
+      dispatch(updateStateUser(response.data ));
+      return ""
+    } catch (error) {}
+  };
+};

@@ -1,32 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import CardTicketDetail from '../../Components/CardTicketDetail/CardTicketDetail';
 import { buyingTicket, getTicketDetail } from '../../Store/Slices/Ticket/Thunk';
+import { updateUser } from '../../Store/Slices/User/Thunk';
 
 const BuyTicket = () => {
   const [quantity, setQuantity] = useState(0);
 
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   const { id } = useParams();
 
   const BuyTickets = () => {
+    console.log('!!!!');
     dispatch(
       buyingTicket({
         idTicket: detailTicket?._id,
         quantity: quantity,
       })
     );
+    dispatch(updateUser());
+    setTimeout(() => {
+      history.push('/home');
+    }, 2000);
   };
 
   useEffect(() => {
     dispatch(getTicketDetail(id));
   }, []);
-
-  useEffect(() => {
-    dispatch(getTicketDetail(id));
-  }, [BuyTickets]);
 
   const { detailTicket } = useSelector((state) => state.ticket.detailTicket);
 
@@ -80,37 +84,6 @@ const BuyTicket = () => {
                 </li>
               </div>
             </ul>
-
-            {/* <div
-              class="d-flex align-self-center justify-content-center btn-group-lg"
-              role="group"
-              aria-label="Basic outlined example"
-            >
-              <button
-                type="button"
-                className="btn btn-primary"
-                disabled={quantity <= 0}
-                onClick={handlerSub}
-              >
-                -
-              </button>
-              <button
-                type="button"
-                className="btn btn-info"
-                disabled={quantity >= detailTicket?.quantityAvailable}
-                onClick={handlerSum}
-              >
-                +
-              </button>
-              <button
-                type="button"
-                class="btn btn-success"
-                onClick={BuyTickets}
-                disabled={quantity >= detailTicket?.quantityAvailable||quantity <= 0}
-              >
-                Buy$
-              </button>
-            </div> */}
             <div
               style={{
                 display: 'flex',
@@ -120,7 +93,7 @@ const BuyTicket = () => {
               }}
             >
               <button
-                disabled={quantity >= detailTicket?.quantityAvailable}
+                disabled={quantity > detailTicket?.quantityAvailable}
                 onClick={handlerSum}
                 style={{
                   display: 'flex',
@@ -173,7 +146,7 @@ const BuyTicket = () => {
               <button
                 onClick={BuyTickets}
                 disabled={
-                  quantity >= detailTicket?.quantityAvailable || quantity <= 0
+                  quantity > detailTicket?.quantityAvailable || quantity <= 0
                 }
                 style={{
                   display: 'flex',
