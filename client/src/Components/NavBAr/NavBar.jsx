@@ -1,29 +1,54 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { LogOutUser } from '../../Store/Slices/User/Thunk';
 
 const NavBar = () => {
-  const user = useSelector(state => state.user)
-  console.log(user);
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const LogOut = () => {
+    dispatch(LogOutUser());
+  };
   return (
     <>
-      <h1>qweq</h1>
-      <p>user</p>
-      <hr />
-
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div className="container-fluid">
         <div className="container-fluid">
-          <Link to = {'/home'}>
-          <button className="btn btn-outline-info me-2" type="button">
-            Home
-          </button>
+          <Link to={'/home'}>
+            <button className="btn btn-outline-info me-2" type="button">
+              Home
+            </button>
           </Link>
-          <button className="btn btn-outline-danger me-2" type="button">
+
+          {user?.user.role === 'Admin' ? (
+            <>
+              <Link to={'/editUsers'}>
+                <button className="btn btn-outline-info me-2" type="button">
+                  edit users
+                </button>
+              </Link>
+              <Link to={'/createTicket'}>
+                <button className="btn btn-outline-info me-2" type="button">
+                  create ticket
+                </button>
+              </Link>
+            </>
+          ) : null}
+        </div>
+          <Link to={`/profile/${user?.user.id}`}>
+            <button className="btn btn-outline-info me-2" type="button">
+              Profile
+            </button>
+          </Link>
+
+          <button
+            className="btn btn-outline-danger me-2"
+            type="button"
+            onClick={LogOut}
+            >
             Log Out
           </button>
-         
-    
-        </div>
+            </div>
       </nav>
     </>
   );

@@ -26,6 +26,14 @@ export const SetUserState = () => {
   };
 };
 
+export const LogOutUser = () => {
+  return function (dispatch) {
+    window.localStorage.removeItem('user')
+    window.localStorage.removeItem('token')
+    dispatch(setUser({user:null}))
+  }
+}
+
 export const registerUSer = (data) => {
   return async function(dispatch){
     try {
