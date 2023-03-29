@@ -14,18 +14,19 @@ const Home = () => {
   }, [dispatch, token]);
 
   const allTickets = useSelector((state) => state.ticket.allTickets.tickets);
-  console.log({allTickets});
+  console.log({ allTickets });
 
   return (
     <>
-      <h1>Home</h1>
       {allTickets?.map((el) => (
         <CardTicket
           key={el._id}
           id={el._id}
           detinity={el.destiny}
           origin={el.origin}
+          date={el.date}
           available={el.quantityAvailable}
+          name={el.name}
         />
       ))}
     </>

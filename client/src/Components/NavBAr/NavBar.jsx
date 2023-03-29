@@ -12,29 +12,29 @@ const NavBar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div className="container-fluid">
         <div className="container-fluid">
-          <Link to={'/home'}>
-            <button className="btn btn-outline-info me-2" type="button">
-              Home
-            </button>
-          </Link>
+          <div className="container-fluid">
+            <Link to={'/home'}>
+              <button className="btn btn-outline-info me-2" type="button">
+                Home
+              </button>
+            </Link>
 
-          {user?.user.role === 'Admin' ? (
-            <>
-              <Link to={'/editUsers'}>
-                <button className="btn btn-outline-info me-2" type="button">
-                  edit users
-                </button>
-              </Link>
-              <Link to={'/createTicket'}>
-                <button className="btn btn-outline-info me-2" type="button">
-                  create ticket
-                </button>
-              </Link>
-            </>
-          ) : null}
-        </div>
+            {user?.user.role === 'Admin' ? (
+              <>
+                <Link to={'/editUsers'}>
+                  <button className="btn btn-outline-info me-2" type="button">
+                    edit users
+                  </button>
+                </Link>
+                <Link to={'/createTicket'}>
+                  <button className="btn btn-outline-info me-2" type="button">
+                    create ticket
+                  </button>
+                </Link>
+              </>
+            ) : null}
+          </div>
           <Link to={`/profile/${user?.user.id}`}>
             <button className="btn btn-outline-info me-2" type="button">
               Profile
@@ -42,13 +42,13 @@ const NavBar = () => {
           </Link>
 
           <button
-            className="btn btn-outline-danger me-2"
+            className="btn btn-outline-danger me-3 "
             type="button"
             onClick={LogOut}
-            >
-            Log Out
+          >
+            Log-Out
           </button>
-            </div>
+        </div>
       </nav>
     </>
   );
