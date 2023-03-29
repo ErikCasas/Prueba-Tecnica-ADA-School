@@ -27,6 +27,7 @@ const Home = () => {
           date={el.date}
           available={el.quantityAvailable}
           name={el.name}
+          render={true}
         />
       ))}
     </>

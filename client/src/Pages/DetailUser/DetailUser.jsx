@@ -32,6 +32,7 @@ const DetailUser = () => {
               available={el.quantityAvailable}
               id={el._id}
               date={el.date}
+              render={false}
             />
           );
         })}
