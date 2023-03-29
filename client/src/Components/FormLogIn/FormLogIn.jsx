@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Form, Formik, Field } from 'formik';
 import { LogInUser } from '../../Store/Slices/User/Thunk';
 import AlertMessage from '../AlertyMessage/AlertMessage';
+import { Link } from 'react-router-dom';
 
 const FormLogIn = () => {
   
@@ -35,6 +36,9 @@ const FormLogIn = () => {
           <label htmlFor="floatingPassword">Password</label>
         </div>
           <button type='submit' className='btn btn-info'>LogIn</button>
+          <Link to={'/SigIn'}>
+          <button type='submit' className='btn btn-warning'>SigIn</button>
+          </Link>
         </Form>
       </Formik>
     

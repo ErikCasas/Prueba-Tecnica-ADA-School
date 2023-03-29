@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import FormLogIn from '../Components/FormLogIn/FormLogIn';
+import FormSigIn from '../Components/FormSignUp/FormSignUp';
 import Test from '../Components/test/test';
 import Home from '../Pages/home/Home';
 import { SetUserState } from '../Store/Slices/User/Thunk';
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Switch>
           <PublicRoute path="/LogIn" component={FormLogIn} />
           <Route path="/home" component={Home} />
+          <Route path="/SigIn" component={FormSigIn} />
         </Switch>
       </BrowserRouter>
     </>

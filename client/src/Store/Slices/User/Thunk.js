@@ -1,5 +1,5 @@
 import { api } from '../../../api/axiosConfig';
-import { logInUser, setMessage, setUser } from './UserSlice';
+import { logInUser, setMessage, setUser, signUp } from './UserSlice';
 
 export const LogInUser = (data) => {
   return async function (dispatch) {
@@ -25,3 +25,15 @@ export const SetUserState = () => {
     }
   };
 };
+
+export const registerUSer = (data) => {
+  return async function(dispatch){
+    try {
+      const response = await api.post('/SignUp', data)
+      console.log("creado", response.data)
+      dispatch(setMessage('Now you can log in'))
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
+  }
+}
