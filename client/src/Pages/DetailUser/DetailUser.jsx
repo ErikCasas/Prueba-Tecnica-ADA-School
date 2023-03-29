@@ -6,15 +6,16 @@ import CardUser from '../../Components/CardUser/CardUser';
 const DetailUser = () => {
   const { user } = useSelector((state) => state.user);
   const data = user?.user;
-  console.log(data);
-  return (
-    <>
+  // console.log(data);
+    
+    return (
+      <>
       <CardUser
         name={data?.name}
         role={data?.role}
         phone={data?.phone}
         email={data?.email}
-      />
+        />
       <div
         style={{
           display: 'grid',
@@ -33,9 +34,9 @@ const DetailUser = () => {
               id={el._id}
               date={el.date}
               render={false}
-            />
-          );
-        })}
+              />
+              );
+            })}
       </div>
     </>
   );

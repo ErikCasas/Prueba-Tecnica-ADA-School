@@ -22,7 +22,7 @@ const NavBar = () => {
 
             {user?.user?.role === 'Admin' ? (
               <>
-                <Link to={'/editUsers'}>
+                <Link to={'/users'}>
                   <button className="btn btn-outline-info me-2" type="button">
                     edit users
                   </button>

@@ -30,7 +30,7 @@ export const LogOutUser = () => {
   return function (dispatch) {
     window.localStorage.removeItem('user');
     window.localStorage.removeItem('token');
-    dispatch(setUser({ user: null }));
+    dispatch(setUser(null ));
   };
 };
 

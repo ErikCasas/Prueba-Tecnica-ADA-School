@@ -4,7 +4,6 @@ import { Redirect, Route } from 'react-router-dom';
 
 const PublicRoute = (props) => {
   const { user } = useSelector((state) => state.user);
-  // console.log('este es', user);
   if (user !== null) {
     return <Redirect to={'/home'} />;
   }
