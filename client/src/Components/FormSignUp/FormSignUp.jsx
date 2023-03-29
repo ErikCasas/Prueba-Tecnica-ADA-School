@@ -6,15 +6,15 @@ import { registerUSer } from '../../Store/Slices/User/Thunk';
 import { useHistory } from 'react-router-dom';
 
 const FormSigUp = () => {
-    const dispatch = useDispatch()
-    const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
 
   const handleSubmit = (data) => {
-    dispatch(registerUSer(data))
+    dispatch(registerUSer(data));
     setTimeout(() => {
-      history.push('/LogIn')
+      history.push('/LogIn');
     }, 1500);
   };
   const validate = (values) => {
@@ -132,7 +132,9 @@ const FormSigUp = () => {
             />
             <label htmlFor="confirmPassword">confirmPassword</label>
           </div>
-          <button type='submit' className='btn btn-info'>sigIn</button>
+          <button type="submit" className="btn btn-info">
+            sigIn
+          </button>
         </Form>
       </Formik>
     </>

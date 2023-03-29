@@ -7,7 +7,10 @@ const api = axios.create({
 const setAuthToken = () => {
   const token = localStorage.getItem('token');
   if (token) {
-    api.defaults.headers.common['Authorization'] = `Bearer ${token.replace(/"/g, "")}`;
+    api.defaults.headers.common['Authorization'] = `Bearer ${token.replace(
+      /"/g,
+      ''
+    )}`;
   } else {
     delete api.defaults.headers.common['Authorization'];
   }
