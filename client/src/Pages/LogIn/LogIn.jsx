@@ -1,13 +1,12 @@
-import React from 'react'
-import FormLogIn from '../../Components/FormLogIn/FormLogIn'
+import React from 'react';
+import FormLogIn from '../../Components/FormLogIn/FormLogIn';
 
 const LogIn = () => {
   return (
     <>
-    <FormLogIn/>
-    
+      <FormLogIn />
     </>
-  )
-}
+  );
+};
 
-export default LogIn
+export default LogIn;

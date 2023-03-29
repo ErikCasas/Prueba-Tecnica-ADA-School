@@ -6,8 +6,11 @@ import { registerUSer } from '../../Store/Slices/User/Thunk';
 import { useHistory } from 'react-router-dom';
 
 const FormSigUp = () => {
+
   const dispatch = useDispatch();
+
   const history = useHistory();
+
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
 
@@ -17,6 +20,7 @@ const FormSigUp = () => {
       history.push('/LogIn');
     }, 1500);
   };
+  
   const validate = (values) => {
     const errors = {};
 

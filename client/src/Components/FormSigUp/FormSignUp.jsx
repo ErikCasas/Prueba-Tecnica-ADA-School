@@ -56,7 +56,11 @@ const FormSignUp = () => {
   return (
     <>
       <h1>Registro</h1>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit} validate={validate}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validate={validate}
+      >
         {({ errors }) => (
           <Form>
             {Object.keys(errors).length > 0 && (
@@ -125,5 +129,3 @@ const FormSignUp = () => {
 };
 
 export default FormSignUp;
-
-

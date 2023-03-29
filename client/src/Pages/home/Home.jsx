@@ -14,7 +14,6 @@ const Home = () => {
   }, [dispatch, token]);
 
   const allTickets = useSelector((state) => state.ticket.allTickets.tickets);
-  console.log({ allTickets });
 
   return (
     <>

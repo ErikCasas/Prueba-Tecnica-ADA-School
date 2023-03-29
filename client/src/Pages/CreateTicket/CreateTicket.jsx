@@ -1,12 +1,12 @@
-import React from 'react'
-import FormCreateTicket from '../../Components/FormCreateTicket/FormCreateTicket'
+import React from 'react';
+import FormCreateTicket from '../../Components/FormCreateTicket/FormCreateTicket';
 
 const CreateTicket = () => {
   return (
     <>
-    <FormCreateTicket/>
+      <FormCreateTicket />
     </>
-  )
-}
+  );
+};
 
-export default CreateTicket
+export default CreateTicket;

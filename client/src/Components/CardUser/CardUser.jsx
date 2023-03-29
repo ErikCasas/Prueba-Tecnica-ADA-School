@@ -3,7 +3,7 @@ import React from 'react';
 const CardUser = ({ name, role, phone, email }) => {
   return (
     <>
-      <div className="card" style={{width: "380px"}}>
+      <div className="card" style={{ width: '380px' }}>
         <div className="card-header">Name: {name}</div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">Email: {email}</li>

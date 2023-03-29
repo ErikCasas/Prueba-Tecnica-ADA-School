@@ -3,6 +3,9 @@ import { Provider } from "react-redux";
 import store from "./Store/Store";
 import AppRoutes from "./Routes/App.Routes";
 
+/**
+ * The App function returns the Provider component, which is a wrapper for the AppRoutes component.
+ */
 function App() {
 
   return (

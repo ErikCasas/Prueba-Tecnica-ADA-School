@@ -3,14 +3,16 @@ import { Form, Formik, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import AlertMessage from '../AlertyMessage/AlertMessage';
 import { createTicket } from '../../Store/Slices/Ticket/Thunk';
+import { useHistory } from 'react-router-dom';
 
 const FormCreateTicket = () => {
-
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   const [quantity, setQuantity] = useState(0);
-  const [message, setMessage] = useState('')
-  const [errors, setErrors] = useState(false)
+  const [message, setMessage] = useState('');
+  const [errors, setErrors] = useState(false);
 
   const initialValues = {
     name: '',
@@ -25,60 +27,62 @@ const FormCreateTicket = () => {
 
   const validate = (values) => {
     const errors = {};
-  
+
     if (!values.name) {
       errors.name = 'Required';
       setMessage('Please enter a name');
     }
-  
+
     if (!values.date) {
       errors.date = 'Required';
       setMessage('Please enter a departure date');
     }
-  
+
     if (!values.price) {
       errors.price = 'Required';
       setMessage('Please enter a price');
     }
-  
+
     if (!values.origin) {
       errors.origin = 'Required';
       setMessage('Please enter an origin');
     }
-  
+
     if (!values.destiny) {
       errors.destiny = 'Required';
       setMessage('Please enter a destination');
     }
-  
+
     if (!values.numberOfPassengers) {
       errors.numberOfPassengers = 'Required';
       setMessage('Please enter the number of passengers');
-    } 
-  
+    }
+
     if (!values.departureTime) {
       errors.departureTime = 'Required';
       setMessage('Please enter a departure time');
     }
 
     if (Object.keys(errors).length) {
-        setErrors(true);
-      } else {
-        setErrors(false);
-        setQuantity(initialValues.numberOfPassengers)
-      }
-  
+      setErrors(true);
+    } else {
+      setErrors(false);
+      setQuantity(initialValues.numberOfPassengers);
+    }
+
     return errors;
   };
 
   const handlerSubmit = (values) => {
-    console.log(values)
-    dispatch(createTicket(values))
+    dispatch(createTicket(values));
+    setTimeout(() => {
+      history.push('/home');
+    }, 1000);
   };
 
   return (
     <>
-     {errors && <AlertMessage message={message} />}
+      {errors && <AlertMessage message={message} />}
       <Formik
         initialValues={initialValues}
         onSubmit={handlerSubmit}
@@ -164,7 +168,6 @@ const FormCreateTicket = () => {
             </label>
           </div>
 
-    
           <button type="submit" className="btn btn-info">
             Create
           </button>

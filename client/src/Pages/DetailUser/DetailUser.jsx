@@ -4,7 +4,7 @@ import CardTicket from '../../Components/CardTicket/CardTicket';
 import CardUser from '../../Components/CardUser/CardUser';
 
 const DetailUser = () => {
-  const { user } = useSelector((state) => state.user);
+  const  user  = useSelector((state) => state.user);
   const data = user?.user;
   // console.log(data);
     

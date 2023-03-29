@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { LogOutUser } from '../../Store/Slices/User/Thunk';
@@ -9,18 +9,23 @@ const NavBar = () => {
   const LogOut = () => {
     dispatch(LogOutUser());
   };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
+        <div className=" container-fluid d-flex justify-content-between">
           <div className="container-fluid">
-            <Link to={'/home'}>
-              <button className="btn btn-outline-info me-2" type="button">
-                Home
-              </button>
-            </Link>
+            {user ? (
+              <>
+                <Link to={'/home'}>
+                  <button className="btn btn-outline-info me-2" type="button">
+                    Home
+                  </button>
+                </Link>
+              </>
+            ) : null}
 
-            {user?.user?.role === 'Admin' ? (
+            {user?.role === 'Admin' ? (
               <>
                 <Link to={'/users'}>
                   <button className="btn btn-outline-info me-2" type="button">
@@ -35,19 +40,25 @@ const NavBar = () => {
               </>
             ) : null}
           </div>
-          <Link to={`/profile/${user?.user?.id}`}>
-            <button className="btn btn-outline-info me-2" type="button">
-              Profile
-            </button>
-          </Link>
+          {user ? (
+            <>
+              <div className="container-fluid ">
+                <Link to={`/profile/${user?.id}`}>
+                  <button className="btn btn-outline-info me-2" type="button">
+                    Profile
+                  </button>
+                </Link>
 
-          <button
-            className="btn btn-outline-danger me-3 "
-            type="button"
-            onClick={LogOut}
-          >
-            Log-Out
-          </button>
+                <button
+                  className="btn btn-outline-danger me-2"
+                  type="button"
+                  onClick={LogOut}
+                >
+                  LogOut
+                </button>
+              </div>
+            </>
+          ) : null}
         </div>
       </nav>
     </>

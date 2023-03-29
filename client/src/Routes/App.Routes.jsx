@@ -29,11 +29,10 @@ const AppRoutes = () => {
       <BrowserRouter>
         <Layout>
           <Switch>
-            {/* <Route exact path={'/test'} component={ListUsers} /> */}
             {/* If there is a logged-in user, they will not be able to access these paths*/}
             <PublicRoute exact path="/LogIn" component={LogIn} />
             <PublicRoute exact path="/SigIn" component={SignUp} />
-
+            {/* <Route exact path={'/test'} component={ListUsers} /> */}
             <ClientRoute exact path={'/profile/:id'} component={DetailUser} />
             <ClientRoute exact path={'/ticket/:id'} component={BuyTicket} />
             <ClientRoute exact path="/home" component={Home} />

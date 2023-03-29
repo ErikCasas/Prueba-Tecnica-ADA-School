@@ -15,15 +15,14 @@ const BuyTicket = () => {
   const { id } = useParams();
 
   const BuyTickets = () => {
-    console.log('!!!!');
     dispatch(
       buyingTicket({
         idTicket: detailTicket?._id,
         quantity: quantity,
       })
     );
-    dispatch(updateUser());
     setTimeout(() => {
+      dispatch(updateUser());
       history.push('/home');
     }, 2000);
   };

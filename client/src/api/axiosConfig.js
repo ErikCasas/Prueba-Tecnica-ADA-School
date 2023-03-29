@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+/* Setting the baseURL for the api and setting the authorization header for the api. */
 const api = axios.create({
   baseURL: 'http://localhost:3002',
 });

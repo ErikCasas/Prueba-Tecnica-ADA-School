@@ -5,7 +5,7 @@ export const getAllTickets = () => {
   return async function (dispatch) {
     try {
       const { data } = await api.get('/tickets/allTickets');
-      console.log('responsable :>> ', data);
+      // console.log('responsable :>> ', data);
       dispatch(allTickets({ tickets: data }));
     } catch (error) {
       console.log('error :>> ', error);
@@ -14,10 +14,10 @@ export const getAllTickets = () => {
 };
 
 export const createTicket = (data) => {
-  return async function (dispatch) {
+  return async function (_dispatch) {
     try {
-      const response = await api.post('/tickets', data);
-      console.log({ response });
+      await api.post('/tickets', data);
+      // console.log({ response });
     } catch (error) {
       console.log('error :>> ', error);
     }
@@ -36,8 +36,12 @@ export const getTicketDetail = (id) => {
 };
 
 export const buyingTicket = (data) => {
-    return async function(dispatch){
-        const Buyet = await api.put('tickets',data)
-        console.log({Buyet});
+  return async function (_dispatch) {
+    try {
+      await api.put('tickets', data);
+      // console.log({ Buyet });
+    } catch (error) {
+      console.log('error :>> ', error);
     }
+  };
 };

@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CardTicket = ({ name, detinity, origin, available, id, date, render }) => {
+const CardTicket = ({
+  name,
+  detinity,
+  origin,
+  available,
+  id,
+  date,
+  render,
+}) => {
   return (
     <>
       <div className="card ticket-card">
@@ -14,13 +22,13 @@ const CardTicket = ({ name, detinity, origin, available, id, date, render }) => 
             from {origin} to {detinity}
           </p>
           <p className="card-text ticket-date">Departure Date: {date}</p>
-          {render?(
+          {render ? (
             <Link to={`ticket/${id}`}>
-            <button type="button" className="btn btn-primary m5">
-              Get
-            </button>
-          </Link>
-            ):null}
+              <button type="button" className="btn btn-primary m5">
+                Get
+              </button>
+            </Link>
+          ) : null}
         </div>
       </div>
     </>
