@@ -13,7 +13,6 @@ const CardTicket = ({
   render,
   quantity
 }) => {
-  console.log(detinity);
   return (
     <>
       <Container className="card ticket-card">

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import CardTicketDetail from '../../Components/CardTicketDetail/CardTicketDetail';
 import { buyingTicket, getTicketDetail } from '../../Store/Slices/Ticket/Thunk';
 import { updateUser } from '../../Store/Slices/User/Thunk';
-
+import add from '../../svg/add.svg';
+import subtraction from '../../svg/subtraction.svg';
+import buy from '../../svg/buy.svg';
 const BuyTicket = () => {
   const [quantity, setQuantity] = useState(0);
 
@@ -14,24 +17,24 @@ const BuyTicket = () => {
 
   const { id } = useParams();
 
-  const BuyTickets = () => {
-    dispatch(
-      buyingTicket({
-        idTicket: detailTicket?._id,
-        quantity: quantity,
-      })
-    );
-    setTimeout(() => {
-      dispatch(updateUser());
-      history.push('/home');
-    }, 2000);
-  };
+  const { detailTicket } = useSelector((state) => state.ticket.detailTicket);
 
   useEffect(() => {
     dispatch(getTicketDetail(id));
   }, []);
 
-  const { detailTicket } = useSelector((state) => state.ticket.detailTicket);
+  const BuyTickets = () => {
+    // dispatch(
+    //   buyingTicket({
+    //     idTicket: detailTicket?._id,
+    //     quantity: quantity,
+    //   })
+    // );
+    // setTimeout(() => {
+    //   dispatch(updateUser());
+    //   history.push('/home');
+    // }, 700);
+  };
 
   const handlerSum = () => {
     setQuantity(quantity + 1);
@@ -43,132 +46,84 @@ const BuyTicket = () => {
 
   return (
     <>
-      <div className="flex-column">
-        <div>CardTicketDetail {id}</div>;
-        <div className="d-flex">
+      <Container className="d-flex">
+        <ContainerTicket>
+          <CardTicketDetail
+            price={detailTicket?.price}
+            origin={detailTicket?.origin}
+            date={detailTicket?.departureTime}
+            hour={detailTicket?.date}
+            available={detailTicket?.quantityAvailable}
+            name={detailTicket?.name}
+            destiny={detailTicket?.destiny}
+          />
+        </ContainerTicket>
+        <ConatinerOpcions>
           <div>
-            <CardTicketDetail
-              price={detailTicket?.price}
-              origin={detailTicket?.origin}
-              date={detailTicket?.departureTime}
-              hour={detailTicket?.date}
-              available={detailTicket?.quantityAvailable}
-              name={detailTicket?.name}
-              destiny={detailTicket?.destiny}
-            />
+
+            <h1>{quantity}{' '}X{' '}{detailTicket?.price}{' '}={' '}${' '}{quantity*detailTicket?.price}</h1>
           </div>
-          <div className="w-100 align-self-center justify-content-center">
-            <ul className="list-group list-group-flush">
-              <div className="d-flex w-100 align-self-center justify-content-center">
-                <li
-                  className="list-group-item d-flex justify-content-between"
-                  style={{ margin: '0 20px 0 0' }}
-                >
-                  <h2
-                    className="justify-content-around "
-                    style={{ margin: '0 10px 0 0' }}
-                  >
-                    Quantity to buy{' '}
-                  </h2>
-                  <h2> {quantity}</h2>
-                </li>
-                <li className="list-group-item d-flex justify-content-between">
-                  <h2
-                    className="justify-content-around "
-                    style={{ margin: '0 10px 0 0' }}
-                  >
-                    Total{' '}
-                  </h2>
-                  <h2> {quantity * detailTicket?.price}</h2>
-                </li>
-              </div>
-            </ul>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: '20px',
-              }}
+          <div
+            className="btn-group"
+            role="group"
+            aria-label="Basic outlined example"
+          >
+            <button
+              type="button"
+              className="btn btn-primary"
+              disabled={quantity > detailTicket?.quantityAvailable}
+              onClick={handlerSum}
             >
-              <button
-                disabled={quantity > detailTicket?.quantityAvailable}
-                onClick={handlerSum}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '16px',
-                  height: '48px',
-                  width: '48px',
-                  borderRadius: '50%',
-                  backgroundColor: '#f2f2f2',
-                  border: '1px solid #ccc',
-                  marginRight: '8px',
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: '24px',
-                    fontWeight: 'bold',
-                    color: '#333',
-                  }}
-                >
-                  +
-                </span>
-              </button>
-              <button
-                disabled={quantity <= 0}
-                onClick={handlerSub}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '16px',
-                  height: '48px',
-                  width: '48px',
-                  borderRadius: '50%',
-                  backgroundColor: '#f2f2f2',
-                  border: '1px solid #ccc',
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: '24px',
-                    fontWeight: 'bold',
-                    color: '#333',
-                  }}
-                >
-                  -
-                </span>
-              </button>
-              <button
-                onClick={BuyTickets}
-                disabled={
-                  quantity > detailTicket?.quantityAvailable || quantity <= 0
-                }
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '16px',
-                  height: '48px',
-                  padding: '0 24px',
-                  borderRadius: '4px',
-                  backgroundColor: '#f44336',
-                  color: '#fff',
-                  border: 'none',
-                  marginLeft: '8px',
-                }}
-              >
-                Buy Product
-              </button>
-            </div>
+              <img src={add} alt="sum" width={40} />
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-primary btn-lg"
+              disabled={quantity <= 0}
+              onClick={handlerSub}
+            >
+              <img src={subtraction} alt="sub" width={40} />
+            </button>
           </div>
-        </div>
-      </div>
+          <button
+            type="button"
+            className="btn btn-success btn-lg"
+            disabled={
+              quantity > detailTicket?.quantityAvailable || quantity <= 0
+            }
+            onClick={BuyTickets}
+            id="liveToastBtn"
+          >
+            <img src={buy} alt="buy" width={40} />{' '}
+            {quantity === 1 || quantity === 0 ? 'Buy Ticket' : 'Buy Tickets'}
+          </button>
+        </ConatinerOpcions>
+      </Container>
     </>
   );
 };
 
+const Container = styled.div`
+  background-color: #0193cc;
+  height: 81vh;
+  flex-direction: row;
+`;
+
+const ConatinerOpcions = styled.div`
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  width: 100%;
+`;
+
+const ContainerTicket = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
 export default BuyTicket;
