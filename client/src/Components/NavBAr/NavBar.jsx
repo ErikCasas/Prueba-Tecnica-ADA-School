@@ -106,6 +106,7 @@ const UL = styled.ul`
 
 const NAV = styled.nav`
   background-color: #c6c6c6;
+  box-shadow: 0px 10px 10px;
 `;
 
 export default NavBar;

@@ -24,8 +24,8 @@ const FormLogIn = () => {
         }}
         onSubmit={handlerSubmit}
       >
-          <Form>
-        <ContainerForm>
+        <Form>
+          <ContainerForm>
             <CointainerInput className="form-floating mb-6">
               <Field
                 name="email"
@@ -46,7 +46,7 @@ const FormLogIn = () => {
               />
               <label htmlFor="floatingPassword">Password</label>
             </CointainerInput>
-      {message ? <AlertMessage message={message} /> : null}
+            {message ? <AlertMessage message={message} /> : null}
 
             <ContainerButtons className='"container-fluid"'>
               <button type="submit" className="btn btn-lg btn-info">
@@ -58,8 +58,8 @@ const FormLogIn = () => {
                 </button>
               </Link>
             </ContainerButtons>
-        </ContainerForm>
-          </Form>
+          </ContainerForm>
+        </Form>
       </Formik>
     </>
   );
@@ -80,12 +80,12 @@ const ContainerForm = styled.div`
   justify-content: space-between;
   border-radius: 15px;
   margin: 40px;
-  border: 2px solid;
-  box-shadow: 0px 0px 15px  ;
+  border: 5px solid #48b5d7;
+  box-shadow: 25px 45px 15px;
   background-color: aliceblue;
 `;
 
 const CointainerInput = styled.div`
   margin-top: 10px;
-`
+`;
 export default FormLogIn;
