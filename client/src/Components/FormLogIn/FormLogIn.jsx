@@ -6,7 +6,6 @@ import AlertMessage from '../AlertyMessage/AlertMessage';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-
 const FormLogIn = () => {
   const message = useSelector((state) => state.user.message);
 
@@ -18,7 +17,6 @@ const FormLogIn = () => {
 
   return (
     <>
-      {message ? <AlertMessage message={message} /> : null}
       <Formik
         initialValues={{
           email: '',
@@ -26,46 +24,68 @@ const FormLogIn = () => {
         }}
         onSubmit={handlerSubmit}
       >
-        <Form>
-          <div className="form-floating mb-6">
-            <Field
-              name="email"
-              type="text"
-              className="form-control"
-              id="floatingInput"
-              placeholder="name@example.com"
-            />
-            <label htmlFor="floatingInput">Email address</label>
-          </div>
-          <div className="form-floating mb-3">
-            <Field
-              name="password"
-              type="password"
-              className="form-control"
-              id="floatingPassword"
-              placeholder="Password"
-            />
-            <label htmlFor="floatingPassword">Password</label>
-          </div>
+          <Form>
+        <ContainerForm>
+            <CointainerInput className="form-floating mb-6">
+              <Field
+                name="email"
+                type="text"
+                className="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+              />
+              <label htmlFor="floatingInput">Email address</label>
+            </CointainerInput>
+            <CointainerInput className="form-floating mb-3">
+              <Field
+                name="password"
+                type="password"
+                className="form-control"
+                id="floatingPassword"
+                placeholder="Password"
+              />
+              <label htmlFor="floatingPassword">Password</label>
+            </CointainerInput>
+      {message ? <AlertMessage message={message} /> : null}
 
-<containerButtons className='d-flex'>
-          <button type="submit" className="btn btn-info">
-            LogIn
-          </button>
-          <Link to={'/SigIn'}>
-            <button type="submit" className="btn btn-warning">
-              SigIn
-            </button>
-          </Link>
-</containerButtons>
-        </Form>
+            <ContainerButtons className='"container-fluid"'>
+              <button type="submit" className="btn btn-lg btn-info">
+                LogIn
+              </button>
+              <Link to={'/SigIn'}>
+                <button type="submit" className="btn-lg btn btn-warning">
+                  SigIn
+                </button>
+              </Link>
+            </ContainerButtons>
+        </ContainerForm>
+          </Form>
       </Formik>
     </>
   );
 };
 
+const ContainerButtons = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+`;
 
-const containerButtons = styled.div`
+const ContainerForm = styled.div`
+  width: 60vh;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  justify-content: space-between;
+  border-radius: 15px;
+  margin: 40px;
+  border: 2px solid;
+  box-shadow: 0px 0px 15px  ;
+  background-color: aliceblue;
+`;
 
+const CointainerInput = styled.div`
+  margin-top: 10px;
 `
 export default FormLogIn;
