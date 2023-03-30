@@ -11,7 +11,9 @@ const CardTicket = ({
   id,
   date,
   render,
+  quantity
 }) => {
+  console.log(detinity);
   return (
     <>
       <Container className="card ticket-card">
@@ -48,7 +50,12 @@ const CardTicket = ({
               </button>
             </Link>
             </ConatinerButton>
-          ) : null}
+          ) : 
+          <ConatinerButton>
+
+            <h1>{quantity}</h1>
+          </ConatinerButton>   
+           }
         </div>
       </Container>
     </>
@@ -56,6 +63,7 @@ const CardTicket = ({
 };
 
 const Container = styled.div`
+height: 220px;
   border: dashed red 5px;
   border-radius: 10px;
   box-shadow: 0px 10px 10px;

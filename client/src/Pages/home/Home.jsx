@@ -17,7 +17,7 @@ const Home = () => {
   const Tickets = allTickets?.slice(0, numberOfTickets);
 
   const moreTickets = () => {
-    setnumberOfTickets(numberOfTickets + 4);
+    setnumberOfTickets(numberOfTickets + 3);
   };
 
   useEffect(() => {
