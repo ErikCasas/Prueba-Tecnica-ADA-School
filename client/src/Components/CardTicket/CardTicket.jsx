@@ -23,7 +23,7 @@ const CardTicket = ({
               {available}
               </TextInfo>
           </h6>
-          <p className="card-text ticket-name d-flex m-0">
+          <div className="card-text ticket-name d-flex m-0">
             from 
             <TextInfo>
             {origin}
@@ -33,12 +33,12 @@ const CardTicket = ({
              {detinity}
             </TextInfo>
 
-          </p>
-          <p className="card-text ticket-date d-flex m-0">Departure Date: 
+          </div>
+          <div className="card-text ticket-date d-flex m-0">Departure Date: 
           <TextInfo>
           {date}
           </TextInfo>
-          </p>
+          </div>
           {render ? (
             <ConatinerButton>
             <Link to={`ticket/${id}`}>
@@ -61,7 +61,7 @@ const Container = styled.div`
   box-shadow: 0px 10px 10px;
 `;
 
-const TextInfo = styled.p`
+const TextInfo = styled.div`
   font-weight: bold;
   margin-left: 8px;
   margin-right: 8px;

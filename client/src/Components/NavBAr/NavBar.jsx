@@ -16,14 +16,15 @@ const NavBar = () => {
     <>
       <NAV className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <img
-            src={Logo}
-            width="170"
-            height="90"
-            alt="LogoAda"
-            className="d-inline-block align-text-top"
-          />
-
+          <Link to={'/home'} style={{ textDecoration: 'none' }}>
+            <img
+              src={Logo}
+              width="170"
+              height="90"
+              alt="LogoAda"
+              className="d-inline-block align-text-top"
+            />
+          </Link>
           <div
             className="collapse navbar-collapse d-flex justify-content-between"
             id="navbarNav"
@@ -31,14 +32,14 @@ const NavBar = () => {
             {user ? (
               <>
                 <UL className="navbar-nav m-4 fw-bold">
-                  <Link to={'/home'} style={{textDecoration:'none'}}>
+                  <Link to={'/home'} style={{ textDecoration: 'none' }}>
                     <LI className="nav-item m-1">
                       <Item className="navbar-brand">Home</Item>
                     </LI>
                   </Link>
                   {user?.role === 'Admin' ? (
                     <>
-                      <Link to={'/users'} style={{textDecoration:'none'}}>
+                      <Link to={'/users'} style={{ textDecoration: 'none' }}>
                         <LI className="nav-item m-1">
                           <Item
                             className="navbar-brand"
@@ -49,7 +50,10 @@ const NavBar = () => {
                           </Item>
                         </LI>
                       </Link>
-                      <Link to={'/createTicket'} style={{textDecoration:'none'}}>
+                      <Link
+                        to={'/createTicket'}
+                        style={{ textDecoration: 'none' }}
+                      >
                         <LI className="nav-item m-1">
                           <Item
                             className="navbar-brand"
@@ -65,12 +69,12 @@ const NavBar = () => {
                 </UL>
 
                 <UL className="navbar-nav fw-bold">
-                  <Link to={`/profile/${user?.id}`} style={{textDecoration:'none'}}>
+                  <Link
+                    to={`/profile/${user?.id}`}
+                    style={{ textDecoration: 'none' }}
+                  >
                     <LI className="nav-item m-1">
-                      <Item
-                        className="navbar-brand">
-                        Profile
-                      </Item>
+                      <Item className="navbar-brand">Profile</Item>
                     </LI>
                   </Link>
                   <button
@@ -79,9 +83,7 @@ const NavBar = () => {
                     onClick={LogOut}
                   >
                     <LI className="nav-item m-1">
-                      <Item >
-                        LogOut
-                      </Item>
+                      <Item>LogOut</Item>
                     </LI>
                   </button>
                 </UL>
