@@ -4,6 +4,8 @@ import { Form, Formik, Field } from 'formik';
 import { LogInUser } from '../../Store/Slices/User/Thunk';
 import AlertMessage from '../AlertyMessage/AlertMessage';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
 
 const FormLogIn = () => {
   const message = useSelector((state) => state.user.message);
@@ -45,6 +47,8 @@ const FormLogIn = () => {
             />
             <label htmlFor="floatingPassword">Password</label>
           </div>
+
+<containerButtons className='d-flex'>
           <button type="submit" className="btn btn-info">
             LogIn
           </button>
@@ -53,10 +57,15 @@ const FormLogIn = () => {
               SigIn
             </button>
           </Link>
+</containerButtons>
         </Form>
       </Formik>
     </>
   );
 };
 
+
+const containerButtons = styled.div`
+
+`
 export default FormLogIn;
