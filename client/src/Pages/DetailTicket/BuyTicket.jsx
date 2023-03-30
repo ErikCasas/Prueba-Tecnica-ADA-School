@@ -24,16 +24,16 @@ const BuyTicket = () => {
   }, []);
 
   const BuyTickets = () => {
-    // dispatch(
-    //   buyingTicket({
-    //     idTicket: detailTicket?._id,
-    //     quantity: quantity,
-    //   })
-    // );
-    // setTimeout(() => {
-    //   dispatch(updateUser());
-    //   history.push('/home');
-    // }, 700);
+    dispatch(
+      buyingTicket({
+        idTicket: detailTicket?._id,
+        quantity: quantity,
+      })
+    );
+    setTimeout(() => {
+      dispatch(updateUser());
+      history.push('/home');
+    }, 700);
   };
 
   const handlerSum = () => {

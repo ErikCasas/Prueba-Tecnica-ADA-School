@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { LogOutUser } from '../../Store/Slices/User/Thunk';
 import Logo from '../../svg/Logo.svg';
 import styled from 'styled-components';
+import create from '../../svg/create.svg'
+import home from '../../svg/home.svg'
+import logout from '../../svg/logout.svg'
 
 const NavBar = () => {
   const { user } = useSelector((state) => state.user);
@@ -34,7 +37,9 @@ const NavBar = () => {
                 <UL className="navbar-nav m-4 fw-bold">
                   <Link to={'/home'} style={{ textDecoration: 'none' }}>
                     <LI className="nav-item m-1">
-                      <Item className="navbar-brand">Home</Item>
+                      <Item className="navbar-brand">
+                      <img src={home} alt="home" width={40} />
+                      </Item>
                     </LI>
                   </Link>
                   {user?.role === 'Admin' ? (
@@ -44,7 +49,6 @@ const NavBar = () => {
                           <Item
                             className="navbar-brand"
                             aria-current="page"
-                            href="#"
                           >
                             Users List
                           </Item>
@@ -58,9 +62,9 @@ const NavBar = () => {
                           <Item
                             className="navbar-brand"
                             aria-current="page"
-                            href="#"
                           >
-                            Create Ticket
+                            Create Ticket{' '}
+                            <img src={create} alt="create" width={20} />
                           </Item>
                         </LI>
                       </Link>
@@ -74,7 +78,8 @@ const NavBar = () => {
                     style={{ textDecoration: 'none' }}
                   >
                     <LI className="nav-item m-1">
-                      <Item className="navbar-brand">Profile</Item>
+                      <Item className="navbar-brand">Profile
+                      </Item>
                     </LI>
                   </Link>
                   <button
@@ -83,7 +88,9 @@ const NavBar = () => {
                     onClick={LogOut}
                   >
                     <LI className="nav-item m-1">
-                      <Item>LogOut</Item>
+                      <Item>LogOut{' '}
+                        <img src={logout} alt="logout" width={20} />
+                      </Item>
                     </LI>
                   </button>
                 </UL>
