@@ -4,9 +4,9 @@ import AlertMessage from '../AlertyMessage/AlertMessage';
 import { useDispatch } from 'react-redux';
 import { registerUSer } from '../../Store/Slices/User/Thunk';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 
 const FormSigUp = () => {
-
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -20,7 +20,7 @@ const FormSigUp = () => {
       history.push('/LogIn');
     }, 1500);
   };
-  
+
   const validate = (values) => {
     const errors = {};
 
@@ -71,7 +71,6 @@ const FormSigUp = () => {
 
   return (
     <>
-      {error && <AlertMessage message={message} />}
       <Formik
         initialValues={{
           name: '',
@@ -84,65 +83,90 @@ const FormSigUp = () => {
         validate={validate}
       >
         <Form>
-          <div className="form-floating mb-3">
-            <Field
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Enter your name"
-              className="form-control"
-            />
-            <label htmlFor="name">Name</label>
-          </div>
-          <div className="form-floating mb-3">
-            <Field
-              type="email"
-              name="email"
-              id="email"
-              placeholder="name@example.com"
-              className={`form-control`}
-            />
-            <label htmlFor="email">Email address</label>
-          </div>
-          <div className="form-floating mb-3">
-            <Field
-              type="number"
-              name="phone"
-              id="phone"
-              placeholder="Enter your phone number"
-              className={'form-control '}
-            />
-            <label htmlFor="phone">Phone number</label>
-          </div>
+          <ContainerForm>
+            <div className="form-floating mb-3">
+              <Field
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+                className="form-control"
+              />
+              <label htmlFor="name">Name</label>
+            </div>
+            <div className="form-floating mb-3">
+              <Field
+                type="email"
+                name="email"
+                id="email"
+                placeholder="name@example.com"
+                className={`form-control`}
+              />
+              <label htmlFor="email">Email address</label>
+            </div>
+            <div className="form-floating mb-3">
+              <Field
+                type="number"
+                name="phone"
+                id="phone"
+                placeholder="Enter your phone number"
+                className={'form-control '}
+              />
+              <label htmlFor="phone">Phone number</label>
+            </div>
 
-          <div className="form-floating mb-3">
-            <Field
-              type="password"
-              name="password"
-              id="password"
-              placeholder="password"
-              className={'form-control '}
-            />
-            <label htmlFor="password">password</label>
-          </div>
+            <div className="form-floating mb-3">
+              <Field
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
+                className={'form-control '}
+              />
+              <label htmlFor="password">password</label>
+            </div>
 
-          <div className="form-floating mb-3">
-            <Field
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              placeholder="confirmPassword"
-              className={'form-control '}
-            />
-            <label htmlFor="confirmPassword">confirmPassword</label>
-          </div>
-          <button type="submit" className="btn btn-info">
-            sigIn
-          </button>
+            <div className="form-floating mb-3">
+              <Field
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                placeholder="confirmPassword"
+                className={'form-control '}
+              />
+              <label htmlFor="confirmPassword">confirmPassword</label>
+            </div>
+            {error && <AlertMessage message={message} />}
+            <ContainerButton>
+              <button type="submit" className="btn btn-info btn-lg">
+                sigIn
+              </button>
+            </ContainerButton>
+          </ContainerForm>
         </Form>
       </Formik>
     </>
   );
 };
+
+const ContainerButton = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+`;
+
+const ContainerForm = styled.div`
+  width: 80vh;
+  height: 57vh;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  justify-content: space-between;
+  border-radius: 15px;
+  margin: 40px;
+  border: 5px solid #48b5d7;
+  box-shadow: 25px 45px 15px;
+  background-color: aliceblue;
+`;
 
 export default FormSigUp;

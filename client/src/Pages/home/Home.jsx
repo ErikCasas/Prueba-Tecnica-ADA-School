@@ -57,7 +57,7 @@ const Container = styled.div`
   background-color: #0193cc;
   height: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
   grid-gap: 20px;
   justify-content: center;
   padding: 40px 50px;
