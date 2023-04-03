@@ -22,6 +22,8 @@ Para iniciar el proyecto, sigue los siguientes pasos:
 
 4. En la terminal correspondiente a la carpeta "api", escribe el siguiente comando para compilar el proyecto de TypeScript:
 
+npm install
+
 npm run tsc
 
 
@@ -34,6 +36,8 @@ npm run dev
 Este comando iniciará el servidor en modo de desarrollo y mostrará la URL del servidor en la terminal.
 
 6. En la terminal correspondiente a la carpeta "cliente", escribe el siguiente comando para compilar el proyecto de React:
+
+npm install
 
 npm run build
 
